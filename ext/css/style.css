@@ -1,0 +1,15 @@
+body{
+    padding: 10px;
+}
+
+form input{
+    border-radius: 5px;
+}
+
+.row-separator{
+    height: 10px;
+}
+
+.whois{
+    transition: width 2s, height 4s;
+}
