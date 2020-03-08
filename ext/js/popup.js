@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    const url = 'http://localhost:12345/api/v1/getdomain/?name=';
+    const url = 'http://localhost:12345/api/getdomain/?name=';
 
     $("form").submit(function(e){
         e.preventDefault();
