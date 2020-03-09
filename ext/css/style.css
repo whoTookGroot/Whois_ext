@@ -9,7 +9,3 @@ form input{
 .row-separator{
     height: 10px;
 }
-
-.whois{
-    transition: width 2s, height 4s;
-}
