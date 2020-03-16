@@ -4,25 +4,31 @@ $(document).ready(function(){
     $("form").submit(function(e){
         e.preventDefault();
         $('.flash-msg').empty();
-        $('.whois').empty();
-        let domain = $("#test input[name=domainName").val();
+        //$('.whois').empty();
+        var domain = $("#test input[name=domainName").val();
+        let rv = '&rv=' + Date.now();
         console.log(domain);
 
         $.ajax({
-            url: url + "" +domain,
+            url: url+domain+rv,
             type: 'GET',
             crossDomain: true,
-
+            cache: false,
             success: function(result){
                 $('.flash-msg').append(flashMsg(result));
                 //$('.whois').append(result);
-                console.log('result');
+                console.log('result ',result);
+                return false;
             },
-
             error: function(error){
-                console.log(error);
+                console.log('last ajax error ',error.status);
+                if(error.status == 0)
+                    $('.flash-msg').append('<div class="alert alert-warning alert-dismissible fade show alert-fixed" role="alert">'
+                    + 'Could not connect to server'
+                    + '</div>');
             }
         });
+        
     });
     
 });
