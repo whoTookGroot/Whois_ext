@@ -12,7 +12,12 @@ const client = new Client({
     port: 5432,
   });
 
-client.connect();
+client.connect(err =>{
+    if(err)
+        console.log('Failed to connect to psql db on port',client['port']);
+    else
+        console.log('Connected to psql db on port',client['port']);
+});
 var app = express();
 //implement CORS for extension api calls
 app.use(cors());
@@ -21,7 +26,7 @@ app.use(cors());
 //Handler
 app.get('/api/getdomain/', (req,res)=>{
     let name = req.query.name;
-    console.log(name);
+    console.log('======================================\nDomain:',name);
 
     resolveQuery(name).then(resp =>{
         console.log('Sending response code :',resp);
@@ -90,5 +95,5 @@ var whois = name =>{
 
 
 var server = app.listen(12345, () => {
-    console.log('Server running');
+    console.log('Server running on port: 12345');
 });

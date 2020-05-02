@@ -9,3 +9,8 @@ form input{
 .row-separator{
     height: 10px;
 }
+
+.row img{
+    max-width: 100%;
+    height: auto;
+}
